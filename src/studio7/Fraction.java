@@ -32,11 +32,16 @@ public class Fraction {
     }
 
     public Fraction simplifiedFraction() {
-        for (int i = 0; i <= this.denominator; i++) {
-            if (this.numerator % this.denominator == 0 && this.denominator % this.denominator == 0) {
-                
+        int iMax = 1;
+        for (int i = 1; i <= this.denominator; i++) {
+            if (this.numerator % i == 0 && this.denominator % i == 0) {
+                iMax = i;
             }
         }
+            int sNumerator = this.numerator / iMax;
+            int sDenominator = this.denominator / iMax;
+            Fraction newFraction = new Fraction(sNumerator, sDenominator);
+            return newFraction;
     }
 
     public String toString() {
@@ -54,6 +59,12 @@ public class Fraction {
         System.out.println(multiplied);
         Fraction reciprocal = f1.reciprocalFraction();
         System.out.println(reciprocal);
+
+        System.out.println();
+        Fraction f3 = new Fraction(10, 8);
+        System.out.println(f3);
+        Fraction simplified = f3.simplifiedFraction();
+        System.out.println(simplified);
     }
 
 }
